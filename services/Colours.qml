@@ -3,7 +3,7 @@ pragma ComponentBehavior: Bound
 
 import qs.config
 import qs.utils
-import Caelestia
+import Uva
 import Quickshell
 import Quickshell.Io
 import QtQuick
@@ -75,7 +75,7 @@ Singleton {
     }
 
     function setMode(mode: string): void {
-        Quickshell.execDetached(["caelestia", "scheme", "set", "--notify", "-m", mode]);
+        Quickshell.execDetached(["uva", "scheme", "set", "--notify", "-m", mode]);
     }
 
     FileView {

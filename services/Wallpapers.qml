@@ -2,7 +2,7 @@ pragma Singleton
 
 import qs.config
 import qs.utils
-import Caelestia
+import Uva
 import Quickshell
 import Quickshell.Io
 import QtQuick
@@ -21,7 +21,7 @@ Searcher {
 
     function setWallpaper(path: string): void {
         actualCurrent = path;
-        Quickshell.execDetached(["caelestia", "wallpaper", "-f", path, ...smartArg]);
+        Quickshell.execDetached(["uva", "wallpaper", "-f", path, ...smartArg]);
     }
 
     function preview(path: string): void {
@@ -81,7 +81,7 @@ Searcher {
     Process {
         id: getPreviewColoursProc
 
-        command: ["caelestia", "wallpaper", "-p", root.previewPath, ...root.smartArg]
+        command: ["uva", "wallpaper", "-p", root.previewPath, ...root.smartArg]
         stdout: StdioCollector {
             onStreamFinished: {
                 Colours.load(text, true);

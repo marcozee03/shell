@@ -65,7 +65,7 @@ Singleton {
     FileView {
         id: kbLayoutFile
 
-        path: Quickshell.env("CAELESTIA_XKB_RULES_PATH") || "/usr/share/X11/xkb/rules/base.lst"
+        path: Quickshell.env("UVA_XKB_RULES_PATH") || "/usr/share/X11/xkb/rules/base.lst"
         onLoaded: {
             const lines = text().match(/! layout\n([\s\S]*?)\n\n/)[1].split("\n");
             for (const line of lines) {
@@ -93,7 +93,7 @@ Singleton {
         id: setDynamicConfsProc
 
         running: true
-        command: ["hyprctl", "--batch", "keyword bindln ,Caps_Lock,global,caelestia:reloadDevices;keyword bindln ,Num_Lock,global,caelestia:reloadDevices"]
+        command: ["hyprctl", "--batch", "keyword bindln ,Caps_Lock,global,uva:reloadDevices;keyword bindln ,Num_Lock,global,uva:reloadDevices"]
     }
 
     IpcHandler {

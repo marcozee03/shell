@@ -64,7 +64,7 @@ Searcher {
 
             function onClicked(list: AppList): void {
                 list.visibilities.launcher = false;
-                Quickshell.execDetached(["caelestia", "wallpaper", "-r"]);
+                Quickshell.execDetached(["uva", "wallpaper", "-r"]);
             }
         },
         Action {

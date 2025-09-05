@@ -26,7 +26,7 @@
   cmake,
   ninja,
   pkg-config,
-  caelestia-cli,
+  uva-cli,
   debug ? false,
   withCli ? false,
   extraRuntimeDeps ? [],
@@ -49,7 +49,7 @@
       hyprland
     ]
     ++ extraRuntimeDeps
-    ++ lib.optional withCli caelestia-cli;
+    ++ lib.optional withCli uva-cli;
 
   fontconfig = makeFontsConf {
     fontDirectories = [material-symbols rubik nerd-fonts.caskaydia-cove];
@@ -62,7 +62,7 @@
   ];
 
   extras = stdenv.mkDerivation {
-    name = "caelestia-extras${lib.optionalString debug "-debug"}";
+    name = "uva-extras${lib.optionalString debug "-debug"}";
     src = lib.fileset.toSource {
       root = ./..;
       fileset = lib.fileset.union ./../CMakeLists.txt ./../extras;
@@ -79,7 +79,7 @@
   };
 
   plugin = stdenv.mkDerivation {
-    name = "caelestia-qml-plugin${lib.optionalString debug "-debug"}";
+    name = "uva-qml-plugin${lib.optionalString debug "-debug"}";
     src = lib.fileset.toSource {
       root = ./..;
       fileset = lib.fileset.union ./../CMakeLists.txt ./../plugin;
@@ -99,7 +99,7 @@
 in
   stdenv.mkDerivation {
     inherit version;
-    pname = "caelestia-shell${lib.optionalString debug "-debug"}";
+    pname = "uva-shell${lib.optionalString debug "-debug"}";
     src = ./..;
 
     nativeBuildInputs = [cmake ninja makeWrapper qt6.wrapQtAppsHook];
@@ -113,7 +113,7 @@ in
     cmakeFlags =
       [
         (lib.cmakeFeature "ENABLE_MODULES" "shell")
-        (lib.cmakeFeature "INSTALL_QSCONFDIR" "${placeholder "out"}/share/caelestia-shell")
+        (lib.cmakeFeature "INSTALL_QSCONFDIR" "${placeholder "out"}/share/uva-shell")
       ]
       ++ cmakeVersionFlags;
 
@@ -127,12 +127,12 @@ in
     '';
 
     postInstall = ''
-      makeWrapper ${quickshell}/bin/qs $out/bin/caelestia-shell \
+      makeWrapper ${quickshell}/bin/qs $out/bin/uva-shell \
       	--prefix PATH : "${lib.makeBinPath runtimeDeps}" \
       	--set FONTCONFIG_FILE "${fontconfig}" \
-      	--set CAELESTIA_LIB_DIR ${extras}/lib \
-        --set CAELESTIA_XKB_RULES_PATH ${xkeyboard-config}/share/xkeyboard-config-2/rules/base.lst \
-      	--add-flags "-p $out/share/caelestia-shell"
+      	--set UVA_LIB_DIR ${extras}/lib \
+        --set UVA_XKB_RULES_PATH ${xkeyboard-config}/share/xkeyboard-config-2/rules/base.lst \
+      	--add-flags "-p $out/share/uva-shell"
 
       mkdir -p $out/lib
       ln -s ${extras}/lib/* $out/lib/
@@ -144,8 +144,8 @@ in
 
     meta = {
       description = "A very segsy desktop shell";
-      homepage = "https://github.com/caelestia-dots/shell";
+      homepage = "https://github.com/uva-dots/shell";
       license = lib.licenses.gpl3Only;
-      mainProgram = "caelestia-shell";
+      mainProgram = "uva-shell";
     };
   }

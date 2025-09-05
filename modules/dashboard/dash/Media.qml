@@ -3,7 +3,7 @@ import qs.components.misc
 import qs.services
 import qs.config
 import qs.utils
-import Caelestia
+import Uva
 import QtQuick
 import QtQuick.Shapes
 

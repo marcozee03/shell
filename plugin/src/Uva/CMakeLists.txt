@@ -2,8 +2,8 @@ find_package(PkgConfig REQUIRED)
 pkg_check_modules(QALCULATE REQUIRED libqalculate)
 pkg_check_modules(AUBIO REQUIRED aubio)
 
-qt_add_qml_module(caelestia
-    URI Caelestia
+qt_add_qml_module(uva
+    URI Uva
     VERSION 0.1
     SOURCES
         cutils.hpp cutils.cpp
@@ -13,7 +13,7 @@ qt_add_qml_module(caelestia
         beattracker.hpp beattracker.cpp
 )
 
-qt_query_qml_module(caelestia
+qt_query_qml_module(uva
     URI module_uri
     VERSION module_version
     PLUGIN_TARGET module_plugin_target
@@ -25,13 +25,13 @@ qt_query_qml_module(caelestia
 )
 
 set(module_dir "${INSTALL_QMLDIR}/${module_target_path}")
-install(TARGETS caelestia LIBRARY DESTINATION "${module_dir}" RUNTIME DESTINATION "${module_dir}")
+install(TARGETS uva LIBRARY DESTINATION "${module_dir}" RUNTIME DESTINATION "${module_dir}")
 install(TARGETS "${module_plugin_target}" LIBRARY DESTINATION "${module_dir}" RUNTIME DESTINATION "${module_dir}")
 install(FILES "${module_qmldir}" DESTINATION "${module_dir}")
 install(FILES "${module_typeinfo}" DESTINATION "${module_dir}")
 
-target_include_directories(caelestia SYSTEM PRIVATE ${QALCULATE_INCLUDE_DIRS} ${AUBIO_INCLUDE_DIRS})
-target_link_libraries(caelestia PRIVATE
+target_include_directories(uva SYSTEM PRIVATE ${QALCULATE_INCLUDE_DIRS} ${AUBIO_INCLUDE_DIRS})
+target_link_libraries(uva PRIVATE
     Qt::Core Qt::Qml Qt::Gui Qt::Concurrent Qt::Multimedia
     ${QALCULATE_LIBRARIES} ${AUBIO_LIBRARIES}
 )

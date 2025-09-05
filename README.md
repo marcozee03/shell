@@ -1,10 +1,10 @@
-<h1 align=center>caelestia-shell</h1>
+<h1 align=center>uva-shell</h1>
 
 <div align=center>
 
-![GitHub last commit](https://img.shields.io/github/last-commit/caelestia-dots/shell?style=for-the-badge&labelColor=101418&color=9ccbfb)
-![GitHub Repo stars](https://img.shields.io/github/stars/caelestia-dots/shell?style=for-the-badge&labelColor=101418&color=b9c8da)
-![GitHub repo size](https://img.shields.io/github/repo-size/caelestia-dots/shell?style=for-the-badge&labelColor=101418&color=d3bfe6)
+![GitHub last commit](https://img.shields.io/github/last-commit/uva-dots/shell?style=for-the-badge&labelColor=101418&color=9ccbfb)
+![GitHub Repo stars](https://img.shields.io/github/stars/uva-dots/shell?style=for-the-badge&labelColor=101418&color=b9c8da)
+![GitHub repo size](https://img.shields.io/github/repo-size/uva-dots/shell?style=for-the-badge&labelColor=101418&color=d3bfe6)
 [![Ko-Fi donate](https://img.shields.io/badge/donate-kofi?style=for-the-badge&logo=ko-fi&logoColor=ffffff&label=ko-fi&labelColor=101418&color=f16061&link=https%3A%2F%2Fko-fi.com%2Fsoramane)](https://ko-fi.com/soramane)
 
 </div>
@@ -15,13 +15,13 @@ https://github.com/user-attachments/assets/0840f496-575c-4ca6-83a8-87bb01a85c5f
 
 -   Widgets: [`Quickshell`](https://quickshell.outfoxxed.me)
 -   Window manager: [`Hyprland`](https://hyprland.org)
--   Dots: [`caelestia`](https://github.com/caelestia-dots)
+-   Dots: [`uva`](https://github.com/uva-dots)
 
 ## Installation
 
 > [!NOTE]
-> This repo is for the desktop shell of the caelestia dots. If you want installation instructions
-> for the entire dots, head to [the main repo](https://github.com/caelestia-dots/caelestia) instead.
+> This repo is for the desktop shell of the uva dots. If you want installation instructions
+> for the entire dots, head to [the main repo](https://github.com/uva-dots/uva) instead.
 
 ### Arch linux
 
@@ -29,19 +29,19 @@ https://github.com/user-attachments/assets/0840f496-575c-4ca6-83a8-87bb01a85c5f
 > If you want to make your own changes/tweaks to the shell do NOT edit the files installed by the AUR
 > package. Instead, follow the instructions in the [manual installation section](#manual-installation).
 
-The shell is available from the AUR as `caelestia-shell`. You can install it with an AUR helper
+The shell is available from the AUR as `uva-shell`. You can install it with an AUR helper
 like [`yay`](https://github.com/Jguer/yay) or manually downloading the PKGBUILD and running `makepkg -si`.
 
-A package following the latest commit also exists as `caelestia-shell-git`. This is bleeding edge
+A package following the latest commit also exists as `uva-shell-git`. This is bleeding edge
 and likely to be unstable/have bugs. Regular users are recommended to use the stable package
-(`caelestia-shell`).
+(`uva-shell`).
 
 ### Nix
 
 You can run the shell directly via `nix run`:
 
 ```sh
-nix run github:caelestia-dots/shell
+nix run github:uva-dots/shell
 ```
 
 Or add it to your system configuration:
@@ -51,29 +51,29 @@ Or add it to your system configuration:
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    caelestia-shell = {
-      url = "github:caelestia-dots/shell";
+    uva-shell = {
+      url = "github:uva-dots/shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 }
 ```
 
-The package is available as `caelestia-shell.packages.<system>.default`, which can be added to your
+The package is available as `uva-shell.packages.<system>.default`, which can be added to your
 `environment.systemPackages`, `users.users.<username>.packages`, `home.packages` if using home-manager,
-or a devshell. The shell can then be run via `caelestia-shell`.
+or a devshell. The shell can then be run via `uva-shell`.
 
 > [!TIP]
 > The default package does not have the CLI enabled by default, which is required for full funcionality.
 > To enable the CLI, use the `with-cli` package.
 
-For home-manager, you can also use the Caelestia's home manager module (explained in [configuring](https://github.com/caelestia-dots/shell?tab=readme-ov-file#home-manager-module)) that installs and configures the shell and the CLI.
+For home-manager, you can also use the Uva's home manager module (explained in [configuring](https://github.com/uva-dots/shell?tab=readme-ov-file#home-manager-module)) that installs and configures the shell and the CLI.
 
 ### Manual installation
 
 Dependencies:
 
--   [`caelestia-cli`](https://github.com/caelestia-dots/cli)
+-   [`uva-cli`](https://github.com/uva-dots/cli)
 -   [`quickshell-git`](https://quickshell.outfoxxed.me) - this has to be the git version, not the latest tagged version
 -   [`ddcutil`](https://github.com/rockowitz/ddcutil)
 -   [`brightnessctl`](https://github.com/Hummer12007/brightnessctl)
@@ -100,14 +100,14 @@ Build dependencies:
 -   [`cmake`](https://cmake.org)
 -   [`ninja`](https://github.com/ninja-build/ninja)
 
-To install the shell manually, install all dependencies and clone this repo to `$XDG_CONFIG_HOME/quickshell/caelestia`.
+To install the shell manually, install all dependencies and clone this repo to `$XDG_CONFIG_HOME/quickshell/uva`.
 Then simply build and install using `cmake`.
 
 ```sh
 cd $XDG_CONFIG_HOME/quickshell
-git clone https://github.com/caelestia-dots/shell.git caelestia
+git clone https://github.com/uva-dots/shell.git uva
 
-cd caelestia
+cd uva
 cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/
 cmake --build build
 sudo cmake --install build
@@ -116,42 +116,42 @@ sudo cmake --install build
 > [!TIP]
 > You can customise the installation location via the `cmake` flags `INSTALL_LIBDIR`, `INSTALL_QMLDIR` and
 > `INSTALL_QSCONFDIR` for the libraries (the beat detector), QML plugin and Quickshell config directories
-> respectively. If changing the library directory, remember to set the `CAELESTIA_LIB_DIR` environment
+> respectively. If changing the library directory, remember to set the `UVA_LIB_DIR` environment
 > variable to the custom directory when launching the shell.
 >
-> e.g. installing to `~/.config/quickshell/caelestia` for easy local changes:
+> e.g. installing to `~/.config/quickshell/uva` for easy local changes:
 >
 > ```sh
-> mkdir -p ~/.config/quickshell/caelestia
-> cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/ -DINSTALL_QSCONFDIR=~/.config/quickshell/caelestia
+> mkdir -p ~/.config/quickshell/uva
+> cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/ -DINSTALL_QSCONFDIR=~/.config/quickshell/uva
 > cmake --build build
 > sudo cmake --install build
-> sudo chown -R $USER ~/.config/quickshell/caelestia
+> sudo chown -R $USER ~/.config/quickshell/uva
 > ```
 
 ## Usage
 
-The shell can be started via the `caelestia shell -d` command or `qs -c caelestia`.
-If the entire caelestia dots are installed, the shell will be autostarted on login
+The shell can be started via the `uva shell -d` command or `qs -c uva`.
+If the entire uva dots are installed, the shell will be autostarted on login
 via an `exec-once` in the hyprland config.
 
 ### Shortcuts/IPC
 
 All keybinds are accessible via Hyprland [global shortcuts](https://wiki.hyprland.org/Configuring/Binds/#dbus-global-shortcuts).
-If using the entire caelestia dots, the keybinds are already configured for you.
-Otherwise, [this file](https://github.com/caelestia-dots/caelestia/blob/main/hypr/hyprland/keybinds.conf#L1-L39)
+If using the entire uva dots, the keybinds are already configured for you.
+Otherwise, [this file](https://github.com/uva-dots/uva/blob/main/hypr/hyprland/keybinds.conf#L1-L39)
 contains an example on how to use global shortcuts.
 
-All IPC commands can be accessed via `caelestia shell ...`. For example
+All IPC commands can be accessed via `uva shell ...`. For example
 
 ```sh
-caelestia shell mpris getActive trackTitle
+uva shell mpris getActive trackTitle
 ```
 
-The list of IPC commands can be shown via `caelestia shell -s`:
+The list of IPC commands can be shown via `uva shell -s`:
 
 ```
-$ caelestia shell -s
+$ uva shell -s
 target drawers
   function toggle(drawer: string): void
   function list(): string
@@ -185,25 +185,25 @@ The profile picture for the dashboard is read from the file `~/.face`, so to set
 it you can copy your image to there or set it via the dashboard.
 
 The wallpapers for the wallpaper switcher are read from `~/Pictures/Wallpapers`
-by default. To change it, change the wallpapers path in `~/.config/caelestia/shell.json`.
+by default. To change it, change the wallpapers path in `~/.config/uva/shell.json`.
 
-To set the wallpaper, you can use the command `caelestia wallpaper`. Use `caelestia wallpaper -h` for more info about
+To set the wallpaper, you can use the command `uva wallpaper`. Use `uva wallpaper -h` for more info about
 the command.
 
 ## Updating
 
 If installed via the AUR package, simply update your system (e.g. using `yay`).
 
-If installed manually, you can update by running `git pull` in `$XDG_CONFIG_HOME/quickshell/caelestia`.
+If installed manually, you can update by running `git pull` in `$XDG_CONFIG_HOME/quickshell/uva`.
 
 ```sh
-cd $XDG_CONFIG_HOME/quickshell/caelestia
+cd $XDG_CONFIG_HOME/quickshell/uva
 git pull
 ```
 
 ## Configuring
 
-All configuration options should be put in `~/.config/caelestia/shell.json`. This file is _not_ created by
+All configuration options should be put in `~/.config/uva/shell.json`. This file is _not_ created by
 default, you must create it manually.
 
 ### Example configuration
@@ -383,8 +383,8 @@ default, you must create it manually.
         "hideDelay": 2000
     },
     "paths": {
-        "mediaGif": "root:/assets/bongocat.gif",
-        "sessionGif": "root:/assets/kurukuru.gif",
+        "mediaGif": "root:/assets/penguin_maracas.gif",
+        "sessionGif": "root:/assets/penguin_breakdance.gif",
         "wallpaperDir": "~/Pictures/Wallpapers"
     },
     "services": {
@@ -420,7 +420,7 @@ For NixOS users, a home manager module is also available.
 <details><summary><code>home.nix</code></summary>
 
 ```nix
-programs.caelestia = {
+programs.uva = {
   enable = true;
   systemd = {
     enable = false; # if you prefer starting from your compositor
@@ -434,7 +434,7 @@ programs.caelestia = {
     paths.wallpaperDir = "~/Images";
   };
   cli = {
-    enable = true; # Also add caelestia-cli to path
+    enable = true; # Also add uva-cli to path
     settings = {
       theme.enableGtk = false;
     };
@@ -442,7 +442,7 @@ programs.caelestia = {
 };
 ```
 
-The module automatically adds Caelestia shell to the path with **full functionality**. The CLI is not required, however you have the option to enable and configure it.
+The module automatically adds Uva shell to the path with **full functionality**. The CLI is not required, however you have the option to enable and configure it.
 
 </details>
 
@@ -450,7 +450,7 @@ The module automatically adds Caelestia shell to the path with **full functional
 
 ### My screen is flickering, help pls!
 
-Try disabling VRR in the hyprland config. You can do this by adding the following to `~/.config/caelestia/hypr-user.conf`:
+Try disabling VRR in the hyprland config. You can do this by adding the following to `~/.config/uva/hypr-user.conf`:
 
 ```conf
 misc {
@@ -460,26 +460,26 @@ misc {
 
 ### I want to make my own changes to the hyprland config!
 
-You can add your custom hyprland configs to `~/.config/caelestia/hypr-user.conf`.
+You can add your custom hyprland configs to `~/.config/uva/hypr-user.conf`.
 
 ### I want to make my own changes to other stuff!
 
-See the [manual installation](https://github.com/caelestia-dots/shell?tab=readme-ov-file#manual-installation) section
+See the [manual installation](https://github.com/uva-dots/shell?tab=readme-ov-file#manual-installation) section
 for the corresponding repo.
 
 ### I want to disable XXX feature!
 
-Please read the [configuring](https://github.com/caelestia-dots/shell?tab=readme-ov-file#configuring) section in the readme.
+Please read the [configuring](https://github.com/uva-dots/shell?tab=readme-ov-file#configuring) section in the readme.
 If there is no corresponding option, make feature request.
 
 ### How do I make my colour scheme change with my wallpaper?
 
-Set a wallpaper via the launcher or `caelestia wallpaper` and set the scheme to the dynamic scheme via the launcher
-or `caelestia scheme set`. e.g.
+Set a wallpaper via the launcher or `uva wallpaper` and set the scheme to the dynamic scheme via the launcher
+or `uva scheme set`. e.g.
 
 ```sh
-caelestia wallpaper -f <path/to/file>
-caelestia scheme set -n dynamic
+uva wallpaper -f <path/to/file>
+uva scheme set -n dynamic
 ```
 
 ### My wallpapers aren't showing up in the launcher!
@@ -505,10 +505,10 @@ Finally another thank you to all the configs I took inspiration from (only one f
 
 ## Stonks 📈
 
-<a href="https://www.star-history.com/#caelestia-dots/shell&Date">
+<a href="https://www.star-history.com/#uva-dots/shell&Date">
  <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=caelestia-dots/shell&type=Date&theme=dark" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=caelestia-dots/shell&type=Date" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=caelestia-dots/shell&type=Date" />
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=uva-dots/shell&type=Date&theme=dark" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=uva-dots/shell&type=Date" />
+   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=uva-dots/shell&type=Date" />
  </picture>
 </a>

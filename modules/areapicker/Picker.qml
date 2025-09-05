@@ -3,7 +3,7 @@ pragma ComponentBehavior: Bound
 import qs.components
 import qs.services
 import qs.config
-import Caelestia
+import Uva
 import Quickshell
 import Quickshell.Io
 import Quickshell.Wayland
@@ -76,7 +76,7 @@ MouseArea {
     }
 
     function save(): void {
-        const tmpfile = `file:///tmp/caelestia-picker-${Quickshell.processId}-${Date.now()}.png`;
+        const tmpfile = `file:///tmp/uva-picker-${Quickshell.processId}-${Date.now()}.png`;
         CUtils.saveItem(screencopy, tmpfile, Qt.rect(Math.ceil(rsx), Math.ceil(rsy), Math.floor(sw), Math.floor(sh)), path => Quickshell.execDetached(["swappy", "-f", path]));
         closeAnim.start();
     }
